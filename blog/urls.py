@@ -1,9 +1,8 @@
 from django.urls import path
-from .views import index, contact, salom, about
+
+from blog.views import index, index_2
 
 urlpatterns=[
     path('',index),
-    path('contact/',contact),
-    path('salom/',salom),
-    path('about/',about)
+    path('index_2',index_2)
 ]
