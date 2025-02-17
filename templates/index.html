@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <script nonce="6d9ba34b-85a9-4804-891c-7010df598c96">(function(w,d){!function(j,k,l,m){j[l]=j[l]||{};j[l].executed=[];j.zaraz={deferred:[],listeners:[]};j.zaraz.q=[];j.zaraz._f=function(n){return function(){var o=Array.prototype.slice.call(arguments);j.zaraz.q.push({m:n,a:o})}};for(const p of["track","set","debug"])j.zaraz[p]=j.zaraz._f(p);j.zaraz.init=()=>{var q=k.getElementsByTagName(m)[0],r=k.createElement(m),s=k.getElementsByTagName("title")[0];s&&(j[l].t=k.getElementsByTagName("title")[0].text);j[l].x=Math.random();j[l].w=j.screen.width;j[l].h=j.screen.height;j[l].j=j.innerHeight;j[l].e=j.innerWidth;j[l].l=j.location.href;j[l].r=k.referrer;j[l].k=j.screen.colorDepth;j[l].n=k.characterSet;j[l].o=(new Date).getTimezoneOffset();if(j.dataLayer)for(const w of Object.entries(Object.entries(dataLayer).reduce(((x,y)=>({...x[1],...y[1]})),{})))zaraz.set(w[0],w[1],{scope:"page"});j[l].q=[];for(;j.zaraz.q.length;){const z=j.zaraz.q.shift();j[l].q.push(z)}r.defer=!0;for(const A of[localStorage,sessionStorage])Object.keys(A||{}).filter((C=>C.startsWith("_zaraz_"))).forEach((B=>{try{j[l]["z_"+B.slice(7)]=JSON.parse(A.getItem(B))}catch{j[l]["z_"+B.slice(7)]=A.getItem(B)}}));r.referrerPolicy="origin";r.src="https://preview.colorlib.com/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(j[l])));q.parentNode.insertBefore(r,q)};["complete","interactive"].includes(k.readyState)?zaraz.init():j.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script></head>
+
+
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 <div class="container">
@@ -38,6 +40,8 @@
 </div>
 </div>
 </nav>
+
+
 <section class="hero-wrap js-fullheight">
 <div class="overlay"></div>
 <div class="container">
@@ -47,21 +51,24 @@
 <span class="subheading">Hey! I am</span>
 <h1>Ronaldo Fredrickson</h1>
 <h2>I'm a
-<span class="txt-rotate" data-period="2000" data-rotate='[ "salom", "siii", "Photographer.", "Marketer.", "Blogger" ]'></span>
+<span class="txt-rotate" data-period="2000" data-rotate='[ "Web Designer.", "Developer.", "Photographer.", "Marketer.", "Blogger" ]'></span>
 </h2>
 </div>
 </div>
 </div>
 </div>
-</div>
+
 <div class="mouse">
 <a href="#" class="mouse-icon">
 <div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
 </a>
 </div>
 </section>
+
+
 <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
 <div class="container">
+      {% for i in AboutMe %}
 <div class="row d-flex no-gutters">
 <div class="col-md-6 col-lg-6 d-flex">
 <div class="img-about img d-flex align-items-stretch">
@@ -74,15 +81,14 @@
 <div class="row justify-content-start pb-3">
 <div class="col-md-12 heading-section ftco-animate">
 <h1 class="big">About</h1>
-<h2 class="mb-4">About Me</h2>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+<h2 class="mb-4">{{i.title}}</h2>
+<p>{{i.description}}</p>
 <ul class="about-info mt-4 px-md-0 px-2">
-<li class="d-flex"><span>Name:</span> <span>Ronaldo Fredrickson</span></li>
-<li class="d-flex"><span>Date of birth:</span> <span>November 28, 1989</span></li>
-<li class="d-flex"><span>Address:</span> <span>San Francisco CA 97987 USA</span></li>
-<li class="d-flex"><span>Zip code:</span> <span>1000</span></li>
-<li class="d-flex"><span>Email:</span> <span><a href="https://preview.colorlib.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="33415c5d525f575c73545e525a5f1d505c5e">[email&#160;protected]</a></span></li>
-<li class="d-flex"><span>Phone: </span> <span>+1-2234-5678-9-0</span></li>
+<li class="d-flex"><span>{{i.full_name}}</span></li>
+<li class="d-flex"><span>{{i.birthday}}</span></li>
+<li class="d-flex"><span>{{i.location}}</span></li>
+<li class="d-flex"><span>{{i.email}}</span></li>
+<li class="d-flex"><span>{{i.phone}}</span></li>
 </ul>
 </div>
 </div>
@@ -97,29 +103,24 @@
 </div>
 </div>
 </div>
+      {% endfor %}
 </div>
 </section>
+
+
 <section class="ftco-section ftco-partner">
 <div class="container">
 <div class="row">
+     {% for i in Image %}
 <div class="col-sm ftco-animate">
-<a href="#" class="partner"><img src="{% static 'images/partner-1.png' %}" class="img-fluid" alt="Colorlib Template"></a>
+<a href="#" class="partner"><img src="{{i.image.url}}" class="img-fluid" alt="Colorlib Template"></a>
 </div>
-<div class="col-sm ftco-animate">
-<a href="#" class="partner"><img src="{% static 'images/partner-2.png' %}" class="img-fluid" alt="Colorlib Template"></a>
-</div>
-<div class="col-sm ftco-animate">
-<a href="#" class="partner"><img src="{% static 'images/partner-3.png' %}" class="img-fluid" alt="Colorlib Template"></a>
-</div>
-<div class="col-sm ftco-animate">
-<a href="#" class="partner"><img src="{% static 'images/partner-4.png' %}" class="img-fluid" alt="Colorlib Template"></a>
-</div>
-<div class="col-sm ftco-animate">
-<a href="#" class="partner"><img src="{% static 'images/partner-5.png' %}" class="img-fluid" alt="Colorlib Template"></a>
-</div>
+     {% endfor %}
 </div>
 </div>
 </section>
+
+
 <section class="ftco-section ftco-no-pb goto-here" id="resume-section">
 <div class="container">
 <div class="row">
@@ -136,119 +137,35 @@
 <div class="col-md-9">
 <div id="page-1" class="page one">
 <h2 class="heading">Education</h2>
+    {% for i in Education %}
 <div class="resume-wrap d-flex ftco-animate">
 <div class="icon d-flex align-items-center justify-content-center">
 <span class="flaticon-ideas"></span>
 </div>
 <div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Bachelor of Science in Computer Science</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+<span class="date">{{i.data_time}}</span>
+<h2>{{i.title}}</h2>
+<span class="position">{{i.description}}</span>
+<p>{{i.body}}</p>
 </div>
 </div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Computer Processing Systems/Computer Software</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Diploma in Computer</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Art &amp; Creative Director</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
+    {% endfor %}
 </div>
 <div id="page-2" class="page two">
 <h2 class="heading">Experience</h2>
+     {% for i in Education %}
 <div class="resume-wrap d-flex ftco-animate">
 <div class="icon d-flex align-items-center justify-content-center">
 <span class="flaticon-ideas"></span>
 </div>
 <div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Software Developer</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+<span class="date">{{i.data_time}}</span>
+<h2>{{i.title}}</h2>
+<span class="position">{{i.description}}</span>
+<p>{{i.body}}</p>
 </div>
 </div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Web Designer</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Web Marketing</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Art &amp; Creative Director</h2>
-<span class="position">Side Tech</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Wordpress Developer</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2017-2018</span>
-<h2>UI/UX Designer</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
+     {% endfor %}
 </div>
 <div id="page-3" class="page three">
 <h2 class="heading">Skills</h2>
@@ -403,55 +320,26 @@
 </div>
 <div id="page-4" class="page four">
 <h2 class="heading">Awards</h2>
+     {% for i in Education %}
 <div class="resume-wrap d-flex ftco-animate">
 <div class="icon d-flex align-items-center justify-content-center">
 <span class="flaticon-ideas"></span>
 </div>
 <div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Top 10 Web Developer</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+<span class="date">{{i.data_time}}</span>
+<h2>{{i.title}}</h2>
+<span class="position">{{i.description}}</span>
+<p>{{i.body}}</p>
  </div>
 </div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Top 5 LeaderShip Exellence Winner</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Top 4 Web Tester</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
-<div class="resume-wrap d-flex ftco-animate">
-<div class="icon d-flex align-items-center justify-content-center">
-<span class="flaticon-ideas"></span>
-</div>
-<div class="text pl-3">
-<span class="date">2014-2015</span>
-<h2>Art &amp; Creative Director</h2>
-<span class="position">Cambridge University</span>
-<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-</div>
-</div>
+     {% endfor %}
 </div>
 </div>
 </div>
 </div>
 </section>
+
+
 <section class="ftco-section" id="services-section">
 <div class="container-fluid px-md-5">
 <div class="row justify-content-center py-5 mt-5">
@@ -531,6 +419,8 @@
 </div>
 </div>
 </section>
+
+
 <section class="ftco-section ftco-project" id="projects-section">
 <div class="container-fluid px-md-0">
 <div class="row no-gutters justify-content-center pb-5">
@@ -598,6 +488,8 @@
 </div>
 </div>
 </section>
+
+
 <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
 <div class="container-fluid px-md-5">
 <div class="row d-md-flex align-items-center">
@@ -636,6 +528,9 @@
 </div>
 </div>
 </section>
+
+
+
 <section class="ftco-section" id="blog-section">
 <div class="container">
 <div class="row justify-content-center mb-5 pb-5">
@@ -700,6 +595,8 @@
 </div>
 </div>
 </section>
+
+
 <section class="ftco-section ftco-hireme img" style="background-image: url(images/bg_1.jpg)">
 <div class="overlay"></div>
 <div class="container">
@@ -712,6 +609,8 @@
 </div>
 </div>
 </section>
+
+
 <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
 <div class="container">
 <div class="row justify-content-center mb-5 pb-3">
@@ -793,6 +692,9 @@
 </div>
 </div>
 </section>
+
+
+
 <footer class="ftco-footer ftco-section">
 <div class="container">
 <div class="row mb-5">
@@ -853,6 +755,8 @@ Copyright &copy;<script data-cfasync="false" src="{% static 'https://preview.col
 </div>
 </div>
 </footer>
+
+
 
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 <script src="{% static 'js/jquery.min.js' %}"></script>
