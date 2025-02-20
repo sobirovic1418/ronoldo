@@ -30,7 +30,31 @@ class Education(models.Model):
     title=models.CharField(max_length=202)
     data_time=models.IntegerField()
     description=models.TextField()
-    body=models.TextField()
+    body=models.CharField(max_length=202)
+
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+class Experience(models.Model):
+    title=models.CharField(max_length=202)
+    data_time=models.IntegerField()
+    description=models.TextField()
+    body=models.CharField(max_length=202)
+
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+class Award(models.Model):
+    title=models.CharField(max_length=202)
+    data_time=models.IntegerField()
+    description=models.TextField()
+    body=models.CharField(max_length=202)
 
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -44,18 +68,23 @@ class Skill(models.Model):
     title=models.CharField(max_length=202)
     week=models.IntegerField()
     month=models.IntegerField()
-    photoshop=models.IntegerField()
-    jquery=models.IntegerField()
-    web=models.IntegerField()
-    css=models.IntegerField()
-    wordpress=models.IntegerField()
-    seo=models.IntegerField()
+    number=models.IntegerField()
 
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
+
+class Part(models.Model):
+    name=models.CharField(max_length=202)
+    number = models.IntegerField()
+
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Service(models.Model):
@@ -68,8 +97,28 @@ class Service(models.Model):
     def __str__(self):
         return self.title
 
+class Set(models.Model):
+    title=models.CharField(max_length=202)
+
+
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+class Desc(models.Model):
+    title=models.CharField(max_length=202)
+    description = models.TextField()
+
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
 class OurProject(models.Model):
-    description=models.TextField()
     title=models.CharField(max_length=202)
     body=models.TextField()
     number=models.IntegerField()
@@ -81,15 +130,34 @@ class OurProject(models.Model):
     def __str__(self):
         return self.title
 
+class Son(models.Model):
+    number = models.IntegerField()
+    name = models.CharField(max_length=202)
 
-class OurBlog(models.Model):
-    body=models.TextField()
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class Blog(models.Model):
     title=models.CharField(max_length=202)
-    data=models.IntegerField()
-    description=models.TextField()
+    body = models.TextField()
 
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
+
+class OurBlog(models.Model):
+    body=models.TextField()
+    data=models.IntegerField()
+    name = models.CharField(max_length=202)
+    description=models.TextField()
+
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.body
